@@ -25,14 +25,12 @@ public class RegionRestController {
 
     @GetMapping("/getregioner")
     public List<Region> getRegionerInit(){
-        List<Region> lstRegioner = apiServiceGetRegioner.getRegioner();
-        return lstRegioner;
+        return apiServiceGetRegioner.getRegioner();
     }
 
     @GetMapping("/regioner")
     public List<Region> getRegioner(){
-        List<Region> lstRegioner = regionRepository.findAll();
-        return lstRegioner;
+        return regionRepository.findAll();
     }
 
     @GetMapping("/kommunenavne/{id}")

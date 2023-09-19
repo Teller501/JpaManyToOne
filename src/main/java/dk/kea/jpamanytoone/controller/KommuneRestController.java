@@ -1,10 +1,8 @@
 package dk.kea.jpamanytoone.controller;
 
 import dk.kea.jpamanytoone.model.Kommune;
-import dk.kea.jpamanytoone.model.Region;
 import dk.kea.jpamanytoone.repository.KommuneRepository;
 import dk.kea.jpamanytoone.service.ApiServiceGetKommuner;
-import dk.kea.jpamanytoone.service.ApiServiceGetRegioner;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -13,6 +11,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
+@CrossOrigin
 public class KommuneRestController {
 
     @Autowired
@@ -23,14 +22,12 @@ public class KommuneRestController {
 
     @GetMapping("/getkommuner")
     public List<Kommune> getKommunerInit(){
-        List<Kommune> lstKommuner = apiServiceGetKommuner.getKommuner();
-        return lstKommuner;
+        return apiServiceGetKommuner.getKommuner();
     }
 
     @GetMapping("/kommuner")
     public List<Kommune> getKommuner(){
-        List<Kommune> lstKommuner = kommuneRepository.findAll();
-        return lstKommuner;
+        return kommuneRepository.findAll();
     }
 
     @GetMapping("/kommuner/{id}")
