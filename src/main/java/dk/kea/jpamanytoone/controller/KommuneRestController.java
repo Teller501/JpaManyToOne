@@ -58,4 +58,15 @@ public class KommuneRestController {
             return ResponseEntity.notFound().build();
         }
     }
+
+    @DeleteMapping("/kommuner/{id}")
+    public ResponseEntity<String> deleteKommune(@PathVariable("id") String id){
+        Optional<Kommune> kommuneOptional = kommuneRepository.findById(id);
+        if (kommuneOptional.isPresent()){
+            kommuneRepository.deleteById(id);
+            return ResponseEntity.ok("Kommune slettet");
+        } else{
+            return ResponseEntity.notFound().build();
+        }
+    }
 }
